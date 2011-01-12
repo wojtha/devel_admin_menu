@@ -1,7 +1,8 @@
 <?php
 /**
  * @file
- * TODO: write desciption
+ * Shows Devel menu links in the main Navigation menu. Designed to use together
+ * with Admin menu.
  * 
  * @author Vojtech Kusy <wojtha@gmail.com>
  * @license GNU GPL2 license
