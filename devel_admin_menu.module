@@ -1,0 +1,38 @@
+<?php
+/**
+ * @file
+ * TODO: write desciption
+ * 
+ * @author Vojtech Kusy <wojtha@gmail.com>
+ * @license GNU GPL2 license
+ */
+
+/**
+ * Implementation of hook_menu()
+ */
+function devel_admin_menu_menu() {
+  $items = array();
+  if (module_exists('devel')) {
+    $items['admin/devel'] = array(
+      'title' => 'Devel',
+      'description' => 'Devel links.',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('devel_admin_settings'),
+      'access arguments' => array('administer site configuration'),
+      'weight' => -10,
+    );
+    $devel_menu = devel_menu();
+
+    $items['admin/devel/settings'] = $devel_menu['admin/settings/devel'];
+    unset($items['admin/devel/settings']['menu_name']);
+
+    foreach ($devel_menu as $path => $item) {
+      if ((strpos($path, 'devel/') === 0)) {
+        $path = 'admin/' . $path;
+        unset($item['menu_name']);
+        $items[$path] = $item;
+      }
+    }
+  }
+  return $items;
+}

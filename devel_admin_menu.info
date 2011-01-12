@@ -1,0 +1,6 @@
+; $Id$
+name = Devel Admin Menu
+description = Display Devel menu inside Admin menu.
+core = 6.x
+package = Development
+dependencies[] = menu
